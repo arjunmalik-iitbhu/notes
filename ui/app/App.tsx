@@ -1,10 +1,26 @@
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 export default function App() {
+  const [ noteTitle, setNoteTitle ] = useState('');
+  const [ noteValue, setNoteValue ] = useState('');
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Button title='Back' />
+      <Button title='Options'/>
+      <View>
+        <TextInput
+          placeholder="New Note Title"
+          onChangeText={(newText: string) => setNoteTitle(newText)}
+          defaultValue={noteTitle}
+        />
+        <TextInput
+          placeholder="Start here..."
+          onChangeText={(newText: string) => setNoteValue(newText)}
+          defaultValue={noteValue}
+        />
+      </View>
       <StatusBar style="auto" />
     </View>
   );
